@@ -1,6 +1,7 @@
 package com.example.friebels.cookfriend;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,14 @@ import android.widget.TextView;
 
 import com.example.friebels.cookfriend.model.Recipe;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class RecipeAdapter extends ArrayAdapter<Recipe> {
 
    List<Recipe> m_recipes;
    LayoutInflater m_inflater;
-
 
    public RecipeAdapter(Context context, List<Recipe> objects) {
       super(context, R.layout.receipes_item, objects);
@@ -38,8 +40,24 @@ public class RecipeAdapter extends ArrayAdapter<Recipe> {
 
       Recipe recipe = m_recipes.get(position);
       tvName.setText(recipe.getName());
-      imageView.setImageResource(R.drawable.apple_pie);
-
+      // imageView.setImageResource(R.drawable.apple_pie);
+      InputStream inputStream = null;
+      try {
+         String filename = recipe.getImageFilename();
+         inputStream = getContext().getAssets().open(filename);
+         Drawable d = Drawable.createFromStream(inputStream, null);
+         imageView.setImageDrawable(d);
+      } catch (IOException e) {
+         e.printStackTrace();
+      } finally {
+         if (inputStream != null) {
+            try {
+               inputStream.close();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+         }
+      }
       return convertView;
    }
 }
