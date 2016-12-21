@@ -16,5 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Recipes!" />
+        android:text="Hello Recipes!"
+        android:id="@+id/recipeNameTextView"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>
