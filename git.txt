@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Git\cmd\git.exe"  config --global http.proxy http://userId:password@squid.intdus.retail-sc.com:3128
