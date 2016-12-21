@@ -16,12 +16,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class RecipeAdapter extends ArrayAdapter<Recipe> {
+public class RecipeAdapterListView extends ArrayAdapter<Recipe> {
 
    List<Recipe> m_recipes;
    LayoutInflater m_inflater;
 
-   public RecipeAdapter(Context context, List<Recipe> objects) {
+   public RecipeAdapterListView(Context context, List<Recipe> objects) {
       super(context, R.layout.receipes_item, objects);
       m_recipes = objects;
       m_inflater = LayoutInflater.from(context);
