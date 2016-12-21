@@ -13,10 +13,10 @@
     tools:context="com.example.friebels.cookfriend.RecipesActivity"
     tools:showIn="@layout/app_bar_recipes">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Recipes!"
-        android:id="@+id/recipeNameTextView"
-        tools:ignore="HardcodedText" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 </RelativeLayout>

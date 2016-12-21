@@ -10,5 +10,5 @@
     <string name="shopping_activity_name">Shopping</string>
     <string name="recipes_activity_name">Recipes</string>
     <string name="action_filter">Filter</string>
-    <string name="title_activity_recipes">RecipesActivity</string>
+    <string name="title_activity_recipes">Recipes</string>
 </resources>

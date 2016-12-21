@@ -13,11 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.friebels.cookfriend.model.Recipe;
 import com.example.friebels.cookfriend.sample.SampleDataProvider;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -25,14 +28,14 @@ import java.util.List;
 public class RecipesActivity extends AppCompatActivity
       implements NavigationView.OnNavigationItemSelectedListener {
 
-   TextView recipeNameTextView = null;
    List<Recipe> recipes = SampleDataProvider.recipes;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_recipes);
-      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+      Toolbar toolbar = (Toolbar) findViewById(R.id.recipesToolbar);
       setSupportActionBar(toolbar);
 
       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addReceipeButton);
@@ -44,15 +47,6 @@ public class RecipesActivity extends AppCompatActivity
          }
       });
 
-      DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-      ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-      drawer.addDrawerListener(toggle);
-      toggle.syncState();
-
-      NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-      navigationView.setNavigationItemSelectedListener(this);
-
       Collections.sort(recipes, new Comparator<Recipe>() {
          @Override
          public int compare(Recipe o1, Recipe o2) {
@@ -60,12 +54,10 @@ public class RecipesActivity extends AppCompatActivity
          }
       });
 
-      String text = "";
-      for (Recipe recipe : recipes) {
-         text += recipe.getName() + "\n";
-      }
-      recipeNameTextView = (TextView) findViewById(R.id.recipeNameTextView);
-      recipeNameTextView.setText(text);
+      RecipeAdapter adapter = new RecipeAdapter(this, recipes);
+
+      ListView listView = (ListView) findViewById(android.R.id.list);
+      listView.setAdapter(adapter);
    }
 
    @Override
