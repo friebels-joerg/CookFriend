@@ -5,7 +5,10 @@ public class Recipe {
     private String m_name;
     private String m_imageFilename;
 
-    public Recipe() {
+    public Recipe(String id, String name, String s1, String s2, int i1, int i2, String imageFilename) {
+        m_id = id;
+        m_name = name;
+        m_imageFilename = imageFilename;
     }
 
     public Recipe(String id, String name, String imageFilename) {
