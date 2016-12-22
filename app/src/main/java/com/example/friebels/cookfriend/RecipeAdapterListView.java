@@ -22,7 +22,7 @@ public class RecipeAdapterListView extends ArrayAdapter<Recipe> {
    LayoutInflater m_inflater;
 
    public RecipeAdapterListView(Context context, List<Recipe> objects) {
-      super(context, R.layout.receipes_item, objects);
+      super(context, R.layout.receipes_rvitem, objects);
       m_recipes = objects;
       m_inflater = LayoutInflater.from(context);
    }
@@ -32,7 +32,7 @@ public class RecipeAdapterListView extends ArrayAdapter<Recipe> {
    public View getView(int position, View convertView, ViewGroup parent) {
 
       if (convertView == null) {
-         convertView = m_inflater.inflate(R.layout.receipes_item, parent, false);
+         convertView = m_inflater.inflate(R.layout.receipes_rvitem, parent, false);
       }
 
       TextView tvName = (TextView) convertView.findViewById(R.id.recipeNameText);

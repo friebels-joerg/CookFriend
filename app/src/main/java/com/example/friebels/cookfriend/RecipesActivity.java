@@ -13,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.example.friebels.cookfriend.model.Recipe;
-import com.example.friebels.cookfriend.sample.DataItemAdapter;
 import com.example.friebels.cookfriend.sample.SampleDataProvider;
 
 import java.util.Collections;
@@ -36,11 +34,11 @@ public class RecipesActivity extends AppCompatActivity
       Toolbar toolbar = (Toolbar) findViewById(R.id.recipesToolbar);
       setSupportActionBar(toolbar);
 
-      FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addReceipeButton);
+      FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addRecipeButton);
       fab.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-            Snackbar.make(view, "Add Receip Button Pressed", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Add Recipe Button Pressed", Snackbar.LENGTH_LONG)
                   .setAction("Action", null).show();
          }
       });
@@ -52,7 +50,7 @@ public class RecipesActivity extends AppCompatActivity
          }
       });
 
-      DataItemAdapter adapter = new DataItemAdapter(this, recipes);
+      RecipeAdapter adapter = new RecipeAdapter(this, recipes);
 
       RecyclerView listView = (RecyclerView) findViewById(R.id.recipeRecyclerView);
       listView.setAdapter(adapter);
