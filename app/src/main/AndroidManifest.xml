@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.friebels.cookfriend">
+          package="com.example.friebels.cookfriend">
 
     <application
         android:allowBackup="true"
@@ -13,19 +13,20 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecipesActivity"
-            android:label="@string/title_activity_recipes"
+            android:name=".RecipeDetailActivity"
+            android:label="@string/details"
+            android:parentActivityName=".BrowseRecipesActivity"/>
+        <activity
+            android:name=".BrowseRecipesActivity"
+            android:label="@string/title_activity_browse_recipes"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.friebels.cookfriend.MainActivity" />
         </activity>
     </application>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CookFriend</string>
+    <string name="app_name">Cooks Friend</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,4 +11,6 @@
     <string name="recipes_activity_name">Recipes</string>
     <string name="action_filter">Filter</string>
     <string name="title_activity_recipes">Recipes</string>
+    <string name="details">Details</string>
+    <string name="title_activity_browse_recipes">Rezepte</string>
 </resources>

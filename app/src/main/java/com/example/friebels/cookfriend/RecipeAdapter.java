@@ -1,5 +1,6 @@
 package com.example.friebels.cookfriend;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
+   public static final String RECIPE_ID = "recipeId";
    private List<Recipe> m_items;
    private Context m_context;
 
@@ -38,11 +40,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
       final Recipe recipe = m_items.get(position);
 
       try {
-         holder.recipeNameText.setText(recipe.getName());
+         holder.m_recipeNameText.setText(recipe.getName());
          String imageFile = recipe.getImageFilename();
          InputStream inputStream = m_context.getAssets().open(imageFile);
          Drawable d = Drawable.createFromStream(inputStream, null);
-         holder.imageView.setImageDrawable(d);
+         holder.m_imageView.setImageDrawable(d);
 
 
       } catch (IOException e) {
@@ -54,7 +56,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
          public void onClick(View v) {
             Toast .makeText(m_context, "You selected " + recipe.getName(), Toast.LENGTH_SHORT)
                   .show();
+            String id = recipe.getId();
+            Intent intent = new Intent(m_context, RecipeDetailActivity.class);
+            intent.putExtra(RECIPE_ID, id);
+            m_context.startActivity(intent);
          }
+
+
       });
 
       holder.m_view.setOnLongClickListener(new View.OnLongClickListener() {
@@ -74,14 +82,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-      public TextView recipeNameText;
-      public ImageView imageView;
+      public TextView m_recipeNameText;
+      public ImageView m_imageView;
 
       public View m_view;
       public ViewHolder(View recipeView) {
          super(recipeView);
-         recipeNameText = (TextView) recipeView.findViewById(R.id.recipeNameText);
-         imageView = (ImageView) recipeView.findViewById(R.id.imageView);
+         m_recipeNameText = (TextView) recipeView.findViewById(R.id.recipeNameText);
+         m_imageView = (ImageView) recipeView.findViewById(R.id.imageView);
          m_view= recipeView;
       }
    }
